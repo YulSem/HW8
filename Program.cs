@@ -154,3 +154,58 @@
 // Результирующая матрица будет:
 // 18 20
 // 15 18
+
+Console.WriteLine("Введите размерность матриц");
+int rows = Convert.ToInt32(Console.ReadLine());
+
+int[,] matrix = new int[rows,rows];
+int[,] matrix2 = new int[rows,rows];
+
+void GetArray()
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            matrix[i,j] = new Random().Next(0,10);
+               Console.Write(matrix[i,j]+ " ");
+        }
+        Console.WriteLine();
+    }
+Console.WriteLine();
+
+     for (int i = 0; i < matrix2.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix2.GetLength(1); j++)
+        {
+            matrix2[i,j] = new Random().Next(0,10);
+               Console.Write(matrix2[i,j]+ " ");
+        }
+        Console.WriteLine();
+    }
+}
+GetArray();
+Console.WriteLine();
+
+int[,] result = new int[rows, rows];
+
+for (int i = 0; i < rows; i++)
+{
+    for (int j = 0; j < rows; j++)
+    {
+        for (int k = 0; k < rows; k++)
+        {
+            result[i, j] += matrix[i, k] * matrix2[k, j];
+        }
+    }
+}
+
+Console.WriteLine("Результат умножения матриц:");
+for (int i = 0; i < rows; i++)
+{
+    for (int j = 0; j < rows; j++)
+    {
+        Console.Write(result[i, j] + " ");
+    }
+    Console.WriteLine();
+}
